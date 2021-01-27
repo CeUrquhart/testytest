@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Vuetify CDN Boilerplate</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,300,400,500,700,900"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css"
+      rel="stylesheet"
+    />
+    <!-- Optional bootstrap CDN -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  </head>
+  <body>
+    <div id="app">
+      <v-app>
+        <v-main>
+          <v-container>
+            <h2 style="text-align: center; font-size: 34px; font-weight: bold;">
+              {{title}}
+            </h2>
+            <v-row>
+              <v-col v-for="(i, index) in brands" :key="index">
+                <v-card class="mx-auto" max-width="275" style="padding: 30px;">
+                  <v-img :src="i.logo" height="225px"></v-img>
+
+                  <v-card-title>
+                    {{i.name}}
+                  </v-card-title>
+                  <v-card-subtitle>
+                    {{i.type}}
+                  </v-card-subtitle>
+
+                  <v-card-actions>
+                    <v-btn color="orange lighten-2" text>
+                      Explore
+                    </v-btn>
+
+                    <v-spacer></v-spacer>
+
+                    <v-btn
+                      icon
+                      @click="brands[index].show = !brands[index].show"
+                    >
+                      <v-icon
+                        >{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down'
+                        }}</v-icon
+                      >
+                    </v-btn>
+                  </v-card-actions>
+
+                  <v-expand-transition>
+                    <div v-show="brands[index].show">
+                      <v-divider></v-divider>
+
+                      <v-card-text>
+                        {{i.tagline}}
+                      </v-card-text>
+                    </div>
+                  </v-expand-transition>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-main>
+      </v-app>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
